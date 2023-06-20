@@ -41,4 +41,4 @@ class myPromise {
 
 }
 
-export default myPromise
+export default myPromise;
