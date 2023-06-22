@@ -1,6 +1,8 @@
 <template>
-    <h3 @click="handleMy">我的</h3>
-    <Button type="primary" @click="handleClick">主要按钮</Button>
+    <div class="page">
+        <h3 @click="handleMy">我的</h3>
+        <Button type="primary" @click="handleClick">主要按钮</Button>
+    </div>
 </template>
 
 <script setup>

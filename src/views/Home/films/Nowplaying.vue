@@ -20,8 +20,8 @@
 <script setup>
 import { ref, onMounted, reactive } from 'vue';
 import { useRouter } from 'vue-router';
-import getData from '../getData.js';
 import { List as vanList, Cell as vanCell } from 'vant';
+import request from '../../../api/index';
 
 const router = useRouter();
 const list = ref([]); //new Proxy({ value: [] })
@@ -31,9 +31,15 @@ const pageNum = ref(1);
 const total = ref(0);
 
 onMounted(() => {
-    getData(pageNum).then((res) => {
-        list.value = res.data.films;
-        total.value = res.data.total;
+    request.getEway({
+        cityId: 210300,
+        pageNum: pageNum.value,
+        pageSize: 10,
+        type: 1,
+        k: 7941984
+    }).then((params) => {
+        list.value = params.data.films;
+        total.value = params.data.total;
     });
 });
 
@@ -52,10 +58,16 @@ const onLoad = () => {
         return;
     }
     pageNum.value++;
-    getData(pageNum).then((res) => {
-        list.value.push(...res.data.films);
+    request.getEway({
+        cityId: 210300,
+        pageNum: pageNum.value,
+        pageSize: 10,
+        type: 1,
+        k: 7941984
+    }).then((params) => {
+        list.value.push(...params.data.films);
         loading.value = false;
-    })
+    });
 }
 
 

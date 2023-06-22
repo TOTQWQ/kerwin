@@ -9,13 +9,14 @@
     </div>
 </template>
 <script setup>
-import axios from 'axios';
+// import axios from 'axios';
 import { reactive, onMounted } from 'vue';
 import _ from 'lodash';
 import { IndexBar as vanIndexBar, Cell as vanCell, IndexAnchor as vanIndexAnchor } from 'vant';
 import { computed } from 'vue';
 import useCityStore from '../../store/cityStore';
 import { useRouter } from 'vue-router';
+import request from '../../api/index';
 
 const data = reactive({
     list: []
@@ -24,15 +25,17 @@ let newCity = [];
 const store = useCityStore();
 const router = useRouter();
 
-onMounted(async () => {
-    const res = await axios({
+onMounted(() => {
+    /* const res = await axios({
         url: 'https://m.maizuo.com/gateway?k=6201034',
         headers: {
             'X-Client-Info': '{"a":"3000","ch":"1002","v":"5.2.1","e":"16858833176532288774930433","bc":"210300"}',
             'X-Host': 'mall.film-ticket.city.list'
         }
-    })
-    data.list = filterCity(res.data.data.cities);
+    }) */
+    request.getCities().then((params) => {
+        data.list = filterCity(params.data.cities);
+    });
 });
 
 /* const filterCity = (cities) => {
