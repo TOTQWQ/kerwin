@@ -9,6 +9,7 @@ import ElementPlus from 'element-plus'; //web端组件全局注册
 import 'vant/lib/index.css'; //移动端样式
 // import './util/config'; //请求拦截
 import 'element-plus/dist/index.css'; //web端样式
+import i18n from './lang'; //多语言
 
 const app = createApp(App);
 const pinia = createPinia();
@@ -16,6 +17,7 @@ const pinia = createPinia();
 app.use(router);
 app.use(pinia);
 app.use(ElementPlus);
+app.use(i18n);
 // app.use(Button);
 // app.use(store);
 
