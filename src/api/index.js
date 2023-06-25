@@ -34,7 +34,15 @@ const request = {
             }
         });
         return res.data;
-    }
+    },
+    //测试跨域请求
+    /* async getJDInfo() {
+        await axios({
+            url: '/pc/game/nav/info',
+        }).then((params) => {
+            console.log(params);
+        });
+    } */
 }
 
 export default request;

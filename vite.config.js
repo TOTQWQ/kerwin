@@ -12,5 +12,15 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url)),
       'vue-i18n': 'vue-i18n/dist/vue-i18n.cjs.js' //解决使用多语言警告问题
     }
-  }
+  },
+  //配置代理
+  /* server: {
+    proxy: {
+      '/pc': {
+        target: 'https://le3-api.game.bilibili.com',
+        changeOrigin: true,
+        // rewrite: (path) => path.replace(/^\/api/, ''), // /api 替换 空
+      }
+    }
+  } */
 })
