@@ -13,6 +13,9 @@ export default defineConfig({
       'vue-i18n': 'vue-i18n/dist/vue-i18n.cjs.js' //解决使用多语言警告问题
     }
   },
+  server: {
+    port: 80
+  },
   //配置代理
   /* server: {
     proxy: {
